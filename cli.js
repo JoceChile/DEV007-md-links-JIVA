@@ -1,37 +1,61 @@
 const { mdLinks } = require('./index');
-// const path = require('path');
+const chalk = require('chalk');
+
+// fn para ver los resultados de los links
+function mostrarResultados(resultado, options) {
+  // if (options.stats) {
+  if (options.stats && !options.validate) {
+    mostrarEstadisticas(resultado.stats);
+  } else {
+    if (!Array.isArray(resultado.links) || resultado.links.length === 0) {
+      console.log(
+        chalk.yellowBright.italic(
+          'No se encontraron archivos md en la ruta proporcionada'
+        )
+      );
+    } else {
+      resultado.links.forEach((link) => {
+        console.log(chalk.cyanBright.italic('href:'), link.href);
+        console.log(chalk.greenBright.italic('text:'), link.text);
+        console.log(chalk.blueBright.italic('file:'), link.file);
+        if (options.validate) {
+          const mensaje =
+            link.ok === 'ok' ? chalk.green.italic('✔') : chalk.red.italic('✖');
+          console.log(chalk.magenta('Status:'), link.status, mensaje);
+        }
+        console.log('----------------------');
+      });
+      if (options.stats && options.validate) {
+        mostrarEstadisticas(resultado.stats);
+      }
+    }
+  }
+}
+// fn mostrar estadisticas
+function mostrarEstadisticas(stats) {
+  console.log(chalk.cyanBright.italic('Estadísticas'));
+  console.log(chalk.greenBright('Total de Links'), stats.total);
+  console.log(chalk.greenBright('Links únicos'), stats.unique);
+  console.log(chalk.redBright('Links rotos'), stats.broken);
+}
 
 // para leer los argumentos de la linea de comando
 const rutaIngresada = process.argv[2];
 
-// fn para ver los resultados
-function mostrarResultados(ruta, archivosMd) {
-  if (archivosMd.length === 0) {
-    console.log('No se encontraron archivos md en la ruta proporcionada');
-  } else {
-    console.log('Arhivos md encontrados');
-    archivosMd.forEach((archivo) => console.log(archivo));
-  }
-}
+// Obtener las opciones desde los argumentos de línea de comando
+const options = {
+  validate: process.argv.includes('--validate') || process.argv.includes('--v'),
+  stats: process.argv.includes('--stats') || process.argv.includes('--s'),
+};
+
 if (!rutaIngresada) {
-  console.log('Debes ingresar una ruta');
+  console.log(chalk.magenta.italic('Debes ingresar una ruta'));
 } else {
-  mdLinks(rutaIngresada)
-    .then((archivosMd) => {
-      mostrarResultados(rutaIngresada, archivosMd);
+  mdLinks(rutaIngresada, options)
+    .then((resultado) => {
+      mostrarResultados(resultado, options);
     })
     .catch((error) => {
-      console.error('No se han encontrado archivos md', error);
+      console.error(chalk.red.italic('Error:', error));
     });
 }
-
-// Stats
-// VALIDATE
-// MENSAJE SI LA RUTA NO EXISTE
-// referir funcion mdlinks
-// CLI command line interface, interfaz de usuario de computadora
-// que permite dar instrucciones a algun programa o sist operativo por
-// medio de una linea de texto simple
-// API application program interface, interfaz de programación de aplicaciones
-// implemeta el tipo de comunicación, entre aplicaciones
-// instalar librerias marked axios chalk
