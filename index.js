@@ -21,7 +21,7 @@ const mdLinks = (ruta, options) => {
       // la ruta es valida, debo verificar si la ruta es absoluta o relativa
       // entonces aqui cambio de relativa a absoluta, y absoluta queda igual
       const rutaAbsoluta = obtenerRutaAbsoluta(ruta);
-      console.log(rutaAbsoluta);
+      // console.log(rutaAbsoluta);
 
       // la ruta absoluta obtenida, necesito ver si es archivo o directorio y realizar recursividad
       const esUnDirectorio = esDirectorio(rutaAbsoluta);
@@ -35,6 +35,8 @@ const mdLinks = (ruta, options) => {
         Promise.all(promises)
           .then((linksEnArchivos) => {
             const allLinks = linksEnArchivos.flat();
+            const calcularEstadisticas = estadisticas(allLinks);
+
             if (options.validate) {
               // Si options.validate es true, agregar status y ok a cada link
               const promises = allLinks.map((link) => {
@@ -52,7 +54,7 @@ const mdLinks = (ruta, options) => {
               Promise.all(promises)
                 .then((linksConValidacion) => {
                   // estadisticas
-                  const calcularEstadisticas = estadisticas(linksConValidacion);
+                  // const calcularEstadisticas = estadisticas(linksConValidacion);
                   resolve({
                     links: linksConValidacion,
                     stats: calcularEstadisticas,
@@ -61,7 +63,7 @@ const mdLinks = (ruta, options) => {
                 .catch((error) => reject(error));
             } else {
               // Si options.validate es false, retornar solo href, text y file
-              resolve({ links: allLinks });
+              resolve({ links: allLinks, stats: calcularEstadisticas });
             }
           })
           .catch((error) => reject(error));

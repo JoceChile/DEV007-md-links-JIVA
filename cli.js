@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { mdLinks } = require('./index');
 const chalk = require('chalk');
 
@@ -5,6 +6,7 @@ const chalk = require('chalk');
 function mostrarResultados(resultado, options) {
   // if (options.stats) {
   if (options.stats && !options.validate) {
+    // console.log(resultado.stats);
     mostrarEstadisticas(resultado.stats);
   } else {
     if (!Array.isArray(resultado.links) || resultado.links.length === 0) {
