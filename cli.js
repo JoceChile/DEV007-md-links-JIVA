@@ -25,7 +25,7 @@ function mostrarResultados(resultado, options) {
             link.ok === 'ok' ? chalk.green.italic('✔') : chalk.red.italic('✖');
           console.log(chalk.magenta('Status:'), link.status, mensaje);
         }
-        console.log('----------------------');
+        console.log('_________________________________');
       });
       if (options.stats && options.validate) {
         mostrarEstadisticas(resultado.stats);

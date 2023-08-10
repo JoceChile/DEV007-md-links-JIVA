@@ -9,7 +9,8 @@
 - [3. Instalación](#3-instalación)
 - [4. Instrucciones de uso](#4-instrucciones-de-uso)
 - [5. Planificación](#5-planificación)
-- [6. Referencias](#6-referencias)
+- [6. Test unitarios](#6-test-unitarios)
+- [7. Referencias](#7-referencias)
 
 ---
 
@@ -32,41 +33,39 @@ algunas estadísticas.
 
 ## 2. Resumen del proyecto
 
-Es una herramienta de línea de comando (CLI) :computadora: una librería
+Es una herramienta de línea de comando (CLI) :computer: una librería
 (o biblioteca - library) en JavaScript.
 
-Con esta herramienta podras analizar :mag: tus archivos Markdown (.md) y verificar
-los links encontrados.
+Con esta herramienta podrás analizar :mag: tus archivos Markdown (.md) y
+verificar :white_check_mark: los links encontrados.
 
-Esta libreria te dira que links estan en tu archivo, cual es su estado de validación
-y estadisticas de cuales links son válidos, unicos y rotos (no válidos).
+Esta librería te dirá que links están en tu archivo, cuál es su estado de validación
+y estadísticas de cuales links son válidos, únicos y rotos (no válidos).
 
 ## 3. Instalación
 
-Debes realizarla por npm :teclado::
+Debes realizarla por npm:
 
 ```
-$ md-links
+npm i md-links
 ```
-
-:::::::::::::::::::::::::::::AQUI CODIGO DE INSTALACIÓN::::::::::::::::::::::
 
 ## 4. Instrucciones de uso
 
-Para que la libreria :archivador: opere de manera correcta debes ingresar la ruta para analizar,
-si no ingresas te mostrara el error, aqui unos ejemplos:
+Para que la librería :archivador: opere de manera correcta debes ingresar la ruta para analizar,
+si no ingresas te mostrara el error, aquí unos ejemplos:
 
 Ingresas de esta forma tu ruta
 
 ```
-$ md-links <tu-ruta>
+md-links <tu-ruta>
 ```
 
 - Ejemplo si no ingresas ruta
 
 ![sinruta](images/sinruta.png)
 
-- Ejemplo si ingresas una ruta erronea
+- Ejemplo si ingresas una ruta errónea
 
 ![rutaerronea](images/rutaerrada.png)
 
@@ -76,7 +75,7 @@ $ md-links <tu-ruta>
 
 #### Opciones
 
-Dentro de la libreria tenemos opciones `--validate` y `--stats`, aqui te muestro su uso.
+Dentro de la librería tenemos opciones `--validate` y `--stats`, aquí te muestro su uso.
 
 `--validate`
 
@@ -97,10 +96,11 @@ básicas sobre los links.
 
 ![stats](images/stats.png)
 
-También podemos combinar `--stats --validate` o `--validate --stats`para obtener estadísticas que necesiten de los resultados de la validación.
+También podemos combinar `--stats --validate` o `--validate --stats` para obtener estadísticas que necesiten de los resultados de la validación.
 
 - Ejemplo
-  `md-links <ruta-ejemplo> --stats --validate`
+
+`md-links <ruta-ejemplo> --stats --validate`
 
 ![statsvalidate](images/statsvalidate.png)
 
@@ -111,7 +111,7 @@ También podemos combinar `--stats --validate` o `--validate --stats`para obtene
 ## 5. Planificación
 
 Para este proyecto inicie con un Diagrama de Flujo que fue plasmando paso a paso
-las tareas a realizar dentro del codigo.
+las tareas a realizar dentro del código.
 
 DIAGRAMA DE FLUJO
 
@@ -119,8 +119,21 @@ DIAGRAMA DE FLUJO
 
 Ya teniendo las ideas de este proyecto me organice con Trello y Project GitHUb
 
-Trello
+TRELLO
+
 ![trello](images/trello.png)
+
+PROJECT GITHUB
+
+![project](images/Project%20GitHub.png)
+
+## 6. Test unitarios
+
+Para este proyecto se realizaron test a todo el módulo de funciones.js
+
+TEST
+
+![MdLinksTest](images/MdLinksTest.png)
 
 ## 7. Referencias
 
@@ -132,8 +145,8 @@ Trello
 - [Linea de comando CLI](https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e)
 - [recurso](https://www.youtube.com/watch?v=Lub5qOmY4JQ).
 
-### **Realizado por :**
+### **Realizado por :sparkles: **
 
 ```
-    https://github.com/JoceChile :sparkles:
+https://github.com/JoceChile
 ```
